@@ -1,0 +1,61 @@
+Progress 02:30:00
+Notes Components, Props, Starting chatbot https://www.youtube.com/watch?v=TtPXvEcE11E
+<ChatInput />
+
+Its easier to build websites because we can divide our html into
+components which can be used in other parts from the site
+
+
+instead of using divs we use fragments <></>
+important if we want to create reusable components without
+unnecessary div headache
+
+div = block element
+Havin two tags
+each line occupied by one element
+
+
+const messages = [
+        {message: "Hello chatbot", sender: "user"},
+        {message: "Hello, how can I help you today?", sender: "robot"},
+        {message: "Can you get me todays date?", sender: "user"},
+        {message: "Today is September 27", sender: "robot"},
+    ];
+
+{messages.map((msg, index) => ( // each msg is the value returned for each index
+            <ChatMessage key={index} message={msg.message} sender={msg.sender} />
+))}
+
+if we have an array of components
+we need to have a key prop
+
+Group into components so the content return stays clean
+
+Event Handlers
+run a function when we interact with the website
+
+passing array into useState makes the data if changed (Updated, Pushed, Removed)
+it automatically changes array
+we need to use UseState so it does update all data html, if we do only array.push it won't force
+re render
+
+"..." spread operator is used to copy the values of the current state of a variable
+so then we can modify it safely
+
+
+onChange => runs a function when we change the text inside the input
+State = save data that changes over time
+
+
+lifting the state up technique = share state between multiple components
+const [inputText, setInputText] = React.useState("");
+setInputText function that changes data
+inputText is the html output of that change
+
+ React.useEffect(()=>{
+    setInterval(()=>{
+        changeDateTimeView();   
+    },1000);
+},[]);
+
+this code runs every 1000 ms or 1s

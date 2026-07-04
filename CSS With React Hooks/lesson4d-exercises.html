@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        body{
+            font-family: Arial;
+        }
+        .app-container{
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content-container{
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .email-input-group{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 200px;
+            padding: 10px 0;
+        }
+        .email-input{
+            padding: 5px;
+            border-radius: 5px;
+            border-width: 1px;
+        }
+        .email-password-group{
+            display: flex;
+            gap:5px;
+        }
+
+        .password-hide-btn{
+            
+        }
+
+        .btn{
+            background-color: rgb(0, 123,255);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border:none;
+            color:white;
+        }
+
+        .register-btn-group{
+            display: flex;
+            gap: 5px;
+        }
+        
+        .login-input-btn{
+
+        }
+        
+        .singup-input-btn{
+
+        }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+
+    <!-- loading example of an external library -->
+    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>  -->
+
+    <!-- loads react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function MainContent(){
+            const [showPassword,setShowPassword] = React.useState(false);
+            const [datetime,setDatetime] = React.useState(dayjs().format('HH:mm:ss'))
+            React.useEffect(()=>{
+                setInterval(()=>{
+                    changeDateTimeView();   
+                },1000);
+            },[]);
+            function changePasswordView(){
+                setShowPassword(!showPassword)
+            }
+            function changeDateTimeView(){
+                setDatetime(dayjs().format('HH:mm:ss'))
+            }
+            
+        
+            return (
+                <div className="main-content-container">
+                    <span>Hello, welcome to my website</span>
+                    <span>{datetime}</span>
+                    <div className="email-input-group">
+                        <input type="text" className="email-input" placeholder="Email" />
+                        <div className="email-password-group">
+                            <input type={showPassword ? "text" : "password"} className="email-input" placeholder="Password" />
+                            <button onClick={changePasswordView} className="password-hide-btn">Hide</button>
+                        </div>
+                    </div>
+                    
+                    <div className="register-btn-group">
+                        <button type="submit" className="btn login-input-btn">Login</button>
+                        <button type="submit" className="btn singup-input-btn">Sing Up</button>
+                    </div>
+                    
+                </div>
+            );
+        }
+      function App(){
+        return (
+            <div className="app-container">
+               <MainContent />
+            </div>
+        );
+      }
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(
+        <App/>
+      );
+    </script>
+  </body>
+</html>

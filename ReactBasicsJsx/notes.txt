@@ -1,0 +1,86 @@
+Notes
+- React-course (11h) - https://www.youtube.com/watch?v=TtPXvEcE11E
+
+.html = contains HTML code = creates a website
+React = external library
+	- bunch of code outside our computer
+	- we can load this code on our website and use it
+That help us create websites easier
+	- easier to program 
+		.easier errors understanding 
+		.we can mix html into js and react just handles it without using dom feature
+		.we can insert javascript code into jsx elements (instead of string interpolation)
+
+Load js files into html?
+<script>console.log('Hello');</script>
+or
+<script src="react-basics.js"></script>
+
+<script> can load code from anywhere on the internet
+
+React to create websites
+react.js = shared features
+react-dom.js = features specific for each website
+
+React to create mobile apps
+react.js and react-native.js
+
+React setup:
+<script type="text/babel">
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(
+        "Welcome to SuperSimpleDev React Course",
+      );
+</script>
+
+
+HTML
+html divided by head (not visible on the page) and body section (visible on the page)
+Load javascript always after the html being renderer (we can only access/modify if there is something already created)
+
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+
+    <!-- loading example of an external library -->
+    <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>
+
+    <!-- loads react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const button = <button>hello</button>;
+      const paragraph = <p>paragraph</p>;
+      const div = (
+        <div>
+          {button}
+          {paragraph}
+        </div>
+      );
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(
+        // creating a root for the react app and rendering all content inside the container
+        div,
+      );
+    </script>
+  </body>
+</html>
+
+
+
+Babel = Javascript compiler = translates other languages into Javascript
+JSX = Javascript XML = Javascript but html written directly into Javascript code
+
+Problem with JSX (browser only understands javascript)
+Need to translate JSX into Javascript
+- Load babel code (script babel.js)
+- Load another script with type ="text/babel" so we can use it
+
+

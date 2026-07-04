@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        .btn-switch{
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-switch-on{
+            background-color: rgb(25, 135, 84);
+        }
+        .btn-switch-off{
+            background-color: rgb(220, 53, 69);
+        }
+        
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+
+    <!-- loading example of an external library -->
+    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>  -->
+
+    <!-- loads react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function ButtonSwitch(){
+            const [isOn, setIsOn] = React.useState(true);
+            function handleClick(){
+                setIsOn(!isOn);
+            }
+            return (
+                <button className={isOn ? "btn-switch btn-switch-on" : "btn-switch btn-switch-off" } onClick={handleClick}>
+                    {isOn ? "ON" : "OFF"}
+                </button>
+            );
+        }
+        function App(){
+            return (
+                <div className="app-container">
+                    <ButtonSwitch />
+                </div>
+            );
+        }
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(
+        <App />,
+      );
+    </script>
+  </body>
+</html>

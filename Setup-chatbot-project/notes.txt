@@ -1,0 +1,41 @@
+node command let us run js code outside of a browser
+
+npm = node package manager
+package = external library
+npm = let us install external libraries into our project
+
+
+some packages also add a command to our command line
+
+Package create-vite adds a command create-vite = help us setup a new React project
+- need to install create-vite package
+- run create-vite in the cmd
+
+npx create-vite (x - execute)
+@ = use a specific version of create-vite
+
+yes to install
+asks for project name
+select react
+select javascript
+
+after npm install all packages will be downloaded into node_modules folder
+
+src = source folder (code and css is here)
+
+assets is where we upload images
+public folder contains files that should be available to the public
+
+eslint = hightlights problems in our js code
+
+package-lock.json says the versions of all our packages installed
+
+vite = tool that we used to set up this project
+vite also help us build the website
+vite also creates a server
+
+strictmode component gives us warnings when developing for crucial errors warning
+
+import rules
+1. packages
+2. js files

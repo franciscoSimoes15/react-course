@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+
+    <!-- loading example of an external library -->
+    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>  -->
+
+    <!-- loads react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function Counter({ displayCount, setDisplayCount }) {
+            const displayCountMessage = displayCount == 0 ? `Click me!` : displayCount === 1 ? `Clicked ${displayCount} time` : `Clicked ${displayCount} times`;
+
+            return (
+                <div>
+                <button onClick={() => setDisplayCount(displayCount + 1)}>{displayCountMessage}</button>
+                </div>
+            );
+        } 
+
+        function ResetButton({ setDisplayCount }) {
+            return (
+                <div>
+                <button onClick={() => setDisplayCount(0)}>Reset</button>
+                </div>
+            );
+        }
+        function App() {
+        const [displayCount, setDisplayCount] = React.useState(0);
+
+          return (
+            <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+              <Counter displayCount={displayCount} setDisplayCount={setDisplayCount} />
+              <Counter displayCount={displayCount} setDisplayCount={setDisplayCount} />
+              <ResetButton setDisplayCount={setDisplayCount} />
+            </div>
+          );
+        }
+      
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(
+        <App />
+      );
+    </script>
+  </body>
+</html>

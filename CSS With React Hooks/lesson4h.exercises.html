@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .app-container {
+      }
+      .main-content-container {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        background-color: rgb(222,222,222);
+
+      }
+      .btn {
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 0px;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="react-basics.js"></script>
+
+    <!-- loading example of an external library -->
+    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script>  -->
+
+    <!-- loads react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function getMessage(clickCounter) {
+        const textCounter =
+          clickCounter === 0
+            ? "Click me!"
+            : clickCounter === 1
+              ? `Clicked ${clickCounter} time`
+              : `Clicked ${clickCounter} times`;
+        return textCounter;
+      }
+
+      function BaseButton({
+        className,
+        buttonRef,
+        setClickCounter,
+        clickCounter,
+      }) {
+        function handleClick() {
+          const nextCounter = clickCounter + 1;
+          setClickCounter(nextCounter);
+        }
+        return (
+          <button className={className} ref={buttonRef} onClick={handleClick}>
+            {getMessage(clickCounter)}
+          </button>
+        );
+      }
+      function ResetButton({ className, setClickCounter }) {
+        return (
+          <button
+            className={className}
+            onClick={() => {
+              setClickCounter(0);
+            }}
+          >
+            Reset
+          </button>
+        );
+      }
+      function AutoClickButton({ className, buttonRef }) {
+        const intervalRef = React.useRef(null);
+        function handleClick() {
+          if (intervalRef.current !== null) {
+            return;
+          }
+          intervalRef.current = setInterval(() => {
+            buttonRef.current.click();
+          }, 1000);
+        }
+        React.useEffect(() => {
+          return () => {
+            clearInterval(intervalRef.current);
+          };
+        }, []);
+        return (
+          <button className={className} onClick={handleClick}>
+            AutoClick
+          </button>
+        );
+      }
+
+      function MainContent() {
+        const [clickCounter, setClickCounter] = React.useState(0);
+        const buttonRef = React.useRef(null);
+
+        return (
+          <div className="main-content-container">
+            <BaseButton
+              className="btn"
+              buttonRef={buttonRef}
+              clickCounter={clickCounter}
+              setClickCounter={setClickCounter}
+            />
+            <ResetButton className="btn" setClickCounter={setClickCounter} />
+            <AutoClickButton className="btn" buttonRef={buttonRef} />
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <div className="app-container">
+            <MainContent />
+          </div>
+        );
+      }
+      const container = document.querySelector(".js-container"); // getting the container element div tag to modify it or access it
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

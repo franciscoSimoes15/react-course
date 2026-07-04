@@ -1,0 +1,72 @@
+button { # css selector - the elements we want to change the appearance
+    background-color : green; # css property : css value 
+}
+
+
+we use className instead of HTML class because Javascript already has a class reserved keyword
+
+
+Flexbox = create a flexible layout
+Layout = how elements are positioned in the layout
+
+To use flexbox:
+1. Create a container around elements
+2. Add display: flex; to container
+3. Use flexbox features
+
+flex-grow = makes an element grow and take up the remaining space
+
+
+<div> = takes up entire line by itself = block element 
+
+When a block element is inside a flexbox
+    - no longer takes up the entire line
+    - only takes up as much space as it needs to
+
+
+elements inside a flexbox will stretch vertically
+
+align-items controls how elements are displayed vertically
+by default its value is stretch
+
+we want the content to stretch all the way down to 100vh
+but doing this will create a scroll because by default
+body has a default margin of 8px on all sides
+
+flex-direction = which direction the elements are positioned (row by default)
+
+if we want the div to not push the items down as it grows we use the overflow:scroll
+scrollbar-width: none; to hide the scrollbar
+
+
+Hooks = insert React features into our component
+
+useState()
+    - automatically updates the html when the data changes
+useEffect()
+    - run some code after the component is created or updated
+useRef()
+    - 
+
+Put hooks at the top of the component
+Hooks should not be inside anything
+
+when we use a function inside another function it's good practice to use narrow function () => {}
+
+React.UseEffect(()=>{
+
+},[]); # ,[] -> dependecy array = control when useEffect runs
+
+useRef = automatically save an HTML element from the component
+
+ref = container with special React features 
+
+React.useRef(null) => initial value
+
+const containerElem = ref.current;
+if (containerElem){
+    containerElem.scrollTop = containerElem.scrollHeight;
+}
+
+# scrollTop gives us how far should we scroll from the top
+# and scroll height element height
