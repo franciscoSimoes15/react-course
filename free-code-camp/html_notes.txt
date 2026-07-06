@@ -1,0 +1,16 @@
+Content inside the main element should be unique to the document 
+should not be repeated in other parts of the document
+
+The section element is used to define sections in a document
+- such as chapters, headers, footers, or any other sections of the document. 
+- It is a semantic element that helps with SEO and accessibility.
+
+When you add a lower-rank heading element to the page, it's implied that you're starting a new subsection.
+
+
+The figure element represents self-contained content and will allow you to associate an image with a caption.
+
+em tag italic
+figure
+
+poster is the thumbnail

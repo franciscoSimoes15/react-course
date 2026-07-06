@@ -1,0 +1,20 @@
+css - Cascading Style Sheets
+css rules
+    Consists of :
+        - selector: specifies html element
+        - declaration block: one or more delcarations between curly braces "{}"
+        - declaration: property: value ;
+        - property: style attribute to change
+        - value: value for the property
+
+
+head tag is a container for metadata about HTML doc
+
+describes the document but isn't displayed on the page itself
+located between html and body tag
+head can contain:
+- title - page title
+- style - css of document
+- link - external resources such as css files
+- metadata - description of doc - keywords, character set
+- script - client-side scripts such as js docs
